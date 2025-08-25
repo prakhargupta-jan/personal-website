@@ -1,32 +1,35 @@
 import BlogCard from "@/components/BlogCard"
 import type { Blog } from "@/details"
+import { useEffect, useState } from "react"
 
-const demoBlogs: Blog[] = [
-    {
-        title: "Understanding React Hooks",
-        date: "2023-10-01",
-        body: "React Hooks are functions that let you use state and other React features without writing a class...",
-        tldr: "An introduction to React Hooks and how they can simplify your React components."
-    },
-    {
-        title: "A Guide to Node.js Streams",
-        date: "2023-09-15",
-        body: "Node.js streams are a powerful way to handle data reading and writing in a       memory-efficient way...",
-        tldr: "Learn about Node.js streams and how to use them for efficient data handling."
-    },
-    {
-        title: "CSS Grid vs. Flexbox",
-        date: "2023-08-30",
-        body: "CSS Grid and Flexbox are two powerful layout systems in CSS. While they have some similarities...",
-        tldr: "A comparison between CSS Grid and Flexbox to help you choose the right tool for your layout needs."
-    }
-]
 const Blogs = () => {
+    const [blogs, setBlogs] = useState<Blog[]>([]);
+    useEffect(() => {
+        // fetch blogs from github repo having markdown files and set them to blogs state
+        fetch('https://api.github.com/repos/prakhargupta-jan/blogs/contents/blogs').then(res => res.json()).then(data => {
+            const blogs: Blog[] = data.map((item: { name: string;}) => {
+                const name = item.name;
+                const url = `https://raw.githubusercontent.com/prakhargupta-jan/blogs/master/blogs/${name}`;
+                return fetch(url).then(res => res.text()).then(text => {
+                    const lines = text.split('\n');
+                    const title = lines[0].replace('# ', '');
+                    const date = lines[1].replace('Date: ', '');
+                    const tldr = lines[2].replace('TL;DR: ', '');
+                    const body = lines.slice(3).join('\n');
+                    return { title, date, tldr, body, url, name };
+                });
+            });
+            Promise.all(blogs).then(blogs => {
+                setBlogs(blogs);
+            });
+        })
+    })
+
     return (
         <div className="h-screen max-h-screen overflow-auto text-white">
             <h1 className="text-4xl font-bold mb-16">Blogs</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {demoBlogs.map((blog, index) => (
+                {blogs.map((blog, index) => (
                     <BlogCard key={index} {...blog} /> 
                 ))}
             </div>

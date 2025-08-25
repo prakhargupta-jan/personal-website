@@ -3,7 +3,7 @@ import { aboutDetails } from '@/details'
 // Name, Intro, Experience, Skills, Experience, Education, etc.
 const About = () => {
     return (
-        <div className="text-white">
+        <div className="text-white bg-black/30 backdrop-blur-xs p-6 rounded-lg mt-2">
             <h1 className="text-4xl font-bold mb-4">About Me
             </h1>
             <p className="mb-4">
@@ -13,13 +13,16 @@ const About = () => {
             {aboutDetails.experience.length > 0 && (
                 <div className="mb-6">
                     <h2 className="text-2xl font-semibold mb-2">Experience</h2>
-                    <ul className="list-disc list-inside">
+                    <ul className="list-disc list-inside w-2/3">
                         {aboutDetails.experience.map((exp, index) => (
                             <li key={index} className="mb-2">
                                 <span className="font-semibold">{exp.role}</span> at <span className="font-semibold">{exp.company}</span> ({exp.duration})
                                 <p className="mt-1 ml-2 text-sm text-gray-300">
+                                    {/* margin on wrapping */}
                                     {exp.details?.map((detail, idx) => (
-                                        <span key={idx} className="block">- {detail}</span>
+                                        <div key={idx} className="flex items-start">
+                                            <span className="mx-2">- </span><span key={idx} className="block">{detail}</span>
+                                        </div>
                                     ))}
                                 </p>
                             </li>
@@ -31,7 +34,7 @@ const About = () => {
                 <h2 className="text-2xl font-semibold mb-2">Skills</h2>
                 {
                     Object.entries(aboutDetails.skills).map(([category, skills], index) => (
-                        <div key={index} className="mb-2 flex w-1/3 justify-between">
+                        <div key={index} className="mb-2 flex w-2/3 justify-between">
                             <span className="font-semibold w-1/2">{category}:</span>
                             <span className='italic w-1/2'>
                                 {skills.join(', ')}

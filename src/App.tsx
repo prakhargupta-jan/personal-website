@@ -5,6 +5,8 @@ import Home from './sections/Home'
 import About from './sections/About'
 import { useEffect, useState } from 'react'
 import Blogs from './sections/Blogs'
+import BlogPage from './sections/BlogPage'
+import Projects from './sections/Projects'
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -34,8 +36,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={< About />} />
-          <Route path="/projects" element={<div>Projects Page</div>} />
-          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/blogs" >
+            <Route index element={<Blogs />} />
+            <Route path=":name" element={<BlogPage />} />
+          </Route>
         </Routes>
       </div>
     </>

@@ -23,7 +23,7 @@ const Navbar = () => {
         };
     }, []);
     return (
-        <div className="w-full px-4 py-4 text-white flex justify-end items-top absolute transition-all duration-300" id="navbar">
+        <div className="w-full px-4 py-4 text-white flex justify-end items-top absolute transition-all duration-300 z-50" id="navbar">
             <div className="space-x-4">
                 <Link to="/" className="hover:underline">Home</Link>
                 <Link to="/about" className="hover:underline">About</Link>
