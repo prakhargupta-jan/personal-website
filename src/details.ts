@@ -110,7 +110,7 @@ const aboutDetails: AboutDetails = {
     Others: ["Linux", "AWS", "Agile Methodologies", "TDD", "System Design"],
   },
   profiles: {
-    github: "https://github.com/prakahrgupta-jan",
+    github: "https://github.com/prakhargupta-jan",
     linkedin: "https://www.linkedin.com/in/prakhar-gupta-jan/",
     leetcode: "https://leetcode.com/prakhargupta-jan/",
     codeforces: "https://codeforces.com/profile/prakhargupta-jan",
@@ -220,6 +220,14 @@ const projectDetails: Project[] = [
     techStack: ["Go", "Gin", "GORM"],
     repoUrl: "https://github.com/prakhargupta-jan/todo_app/tree/main",
   },
+  {
+    name: "TourGuide",
+    description: "A webapp to connect tourists with local guides.",
+    techStack: ["React", "Node.js", "Express.js", "MongoDB", "Tailwind CSS"],
+    repoUrl: "https://github.com/prakhargupta-jan/tour-guide/tree/main/routes",
+  }
 ];
+
+export const permaLinkForBlogs = "https://github.com/prakhargupta-jan/blogs/tree-commit-info/cba0534dcb8bbd412cdd19201d7e9847ef3cfc37/blogs"
 
 export { homeDetails, aboutDetails, projectDetails };

@@ -1,5 +1,8 @@
 # ISSUES
 - Rubik font loads after everything. 
   - need to fix this
-- Loader not implemented yet
-- use dynamic github links in blogs pages
+- need to test
+  - changing details.ts works
+
+- BEWARE
+  - Rate limiting from github api

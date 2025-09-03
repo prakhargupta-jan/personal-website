@@ -2,7 +2,7 @@ import type { Project } from "@/details"
 
 const ProjectCard = ({ name, description, techStack, repoUrl, liveUrl}: Project) => {
     return (
-        <div className="bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition duration-300 ease-in-out flex flex-col justify-between h-full">
+        <div className="bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition duration-300 ease-in-out flex flex-col justify-between h-60">
             <div>
             <h2 className="text-lg font-semibold mb-2">{name}</h2>
             <p className="text-gray-400 mb-4 max-h-18 overflow-hidden">{description}</p>

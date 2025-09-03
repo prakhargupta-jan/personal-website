@@ -1,9 +1,10 @@
+import { motion } from 'framer-motion'
 import { aboutDetails } from '@/details'
 // Will have details about me
 // Name, Intro, Experience, Skills, Experience, Education, etc.
 const About = () => {
     return (
-        <div className="text-white bg-black/30 backdrop-blur-xs p-6 rounded-lg mt-2">
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-white bg-black/30 backdrop-blur-xs p-6 rounded-lg mt-2">
             <h1 className="text-4xl font-bold mb-4">About Me
             </h1>
             <p className="mb-4">
@@ -88,7 +89,7 @@ const About = () => {
                     </ul>
                 </div>
             )}
-        </div>
+        </motion.div>
     );
 }
 
