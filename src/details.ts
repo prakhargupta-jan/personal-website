@@ -126,14 +126,9 @@ const aboutDetails: AboutDetails = {
   ],
   education: [
     {
-      institution: "State University",
-      degree: "B.Sc. in Computer Science",
-      year: "2022",
-    },
-    {
-      institution: "City College",
-      degree: "High School Diploma",
-      year: "2018",
+      institution: "IIIT Kota",
+      degree: "B.Tech. in Electronics and Communication Engineering",
+      year: "2024",
     },
   ],
 };
